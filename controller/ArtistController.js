@@ -6,8 +6,10 @@ const fs = require('fs')
 const braintree = require('braintree')
 const userOrderModal = require('../models/userOrderModels')
 const dotenv = require('dotenv')
+
 // below we are creating the payment gateway
 dotenv.config()
+
 // console.log(process.env.BRAINTREE_PUBLIC_KEY)
 var gateway = new braintree.BraintreeGateway({
     environment: braintree.Environment.Sandbox,
@@ -15,6 +17,7 @@ var gateway = new braintree.BraintreeGateway({
     publicKey: process.env.BRAINTREE_PUBLIC_KEY,
     privateKey: process.env.BRAINTREE_PRIVATE_KEY
 })
+
 // below is the controller for register
 const registerController = async (req, res) => {
 
@@ -31,6 +34,7 @@ const registerController = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedpassword = await bcrypt.hash(password, salt);
         req.fields.password = hashedpassword;
+        
         const newArtist = new ArtistModel({ ...req.fields });
         if (photo) {
             newArtist.photo.data = fs.readFileSync(photo.path);

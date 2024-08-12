@@ -3,6 +3,7 @@ const artworkModel = require('../models/artworkModel')
 const fs = require('fs')
 const artistModel = require('../models/ArtistModel')
 const mongoose = require('mongoose')
+
 // below is the route for creating the product
 const createPostController = async (req, res) => {
 

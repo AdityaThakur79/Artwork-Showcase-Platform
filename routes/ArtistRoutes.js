@@ -16,6 +16,7 @@ router.post('/forgot-password', artistAuthController.forgotController)
 
 // // geting the user details so that can be updated further
 router.get('/getArtistDetails/:artistId', artistAuthController.getArtistDetails)
+
 // // update-profile ||POST
 router.put('/update-profile/:ArtistId', artistAuthController.updateArtistProfileController)
 
@@ -23,7 +24,6 @@ router.put('/update-profile/:ArtistId', artistAuthController.updateArtistProfile
 router.get('/getArtistArtwork/:ArtistId', artistAuthController.getArtistArtworkController)
 
 //get artist photo controller
-
 router.get('/getArtistPhoto/:ArtistId', artistAuthController.getArtistPhoto)
 
 // below is the route for adding an item into the cart
@@ -41,4 +41,5 @@ router.delete('/removeAllCartItem/:ArtistId', artistAuthController.removeAllCart
 router.get('/braintree/token', artistAuthController.braintreeTokenController)
 // below is the route for braintree payment
 router.post('/braintree/payment', artistAuthController.brainTreePatymentController)
+
 module.exports = router

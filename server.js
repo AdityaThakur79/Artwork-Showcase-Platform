@@ -22,17 +22,22 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json())
+
 // app.use(authMiddleware)
 app.use(morgan('dev'))
+
 // connection to database
 connectToDb()
+
 // below we are creating the routes
 app.use('/api/v1/user', userRoutes)
 app.use('/api/v1/admin', adminRoutes)
 app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/artist', ArtistRoutes)
 app.use('/api/v1/artwork', Artwork)
+
 const port = process.env.PORT || 8080;
+
 app.listen(port, () => {
     console.log(`server is running in ${process.env.MODE}on the port ${8080}`)
 })
