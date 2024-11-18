@@ -9,6 +9,8 @@ const authMiddleware = require('./middlewares/authMiddleware')
 const ArtistRoutes = require('./routes/ArtistRoutes')
 const Artwork = require('./routes/artworkRoutes')
 const cors = require('cors')
+const path = require("path");
+
 // configing the dotenv file 
 dotenv.config()
 
@@ -35,6 +37,15 @@ app.use('/api/v1/admin', adminRoutes)
 app.use('/api/v1/category', categoryRoutes)
 app.use('/api/v1/artist', ArtistRoutes)
 app.use('/api/v1/artwork', Artwork)
+
+//static files
+app.use(express.static(path.join(__dirname, "./client/build")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+
 
 const port = process.env.PORT || 8080;
 
